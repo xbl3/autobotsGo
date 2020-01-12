@@ -1,0 +1,609 @@
+Microsoft Windows [Version 10.0.17763.805]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\Administrator>rclone config
+Current remotes:
+
+Name                 Type
+====                 ====
+0                    drive
+13                   drive
+2                    drive
+veeam4               alias
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q> n
+name> downloads
+Type of storage to configure.
+Enter a string value. Press Enter for the default ("").
+Choose a number from below, or type in your own value
+ 1 / 1Fichier
+   \ "fichier"
+ 2 / Alias for an existing remote
+   \ "alias"
+ 3 / Amazon Drive
+   \ "amazon cloud drive"
+ 4 / Amazon S3 Compliant Storage Provider (AWS, Alibaba, Ceph, Digital Ocean, Dreamhost, IBM COS, Minio, etc)
+   \ "s3"
+ 5 / Backblaze B2
+   \ "b2"
+ 6 / Box
+   \ "box"
+ 7 / Cache a remote
+   \ "cache"
+ 8 / Citrix Sharefile
+   \ "sharefile"
+ 9 / Dropbox
+   \ "dropbox"
+10 / Encrypt/Decrypt a remote
+   \ "crypt"
+11 / FTP Connection
+   \ "ftp"
+12 / Google Cloud Storage (this is not Google Drive)
+   \ "google cloud storage"
+13 / Google Drive
+   \ "drive"
+14 / Google Photos
+   \ "google photos"
+15 / Hubic
+   \ "hubic"
+16 / JottaCloud
+   \ "jottacloud"
+17 / Koofr
+   \ "koofr"
+18 / Local Disk
+   \ "local"
+19 / Mail.ru Cloud
+   \ "mailru"
+20 / Mega
+   \ "mega"
+21 / Microsoft Azure Blob Storage
+   \ "azureblob"
+22 / Microsoft OneDrive
+   \ "onedrive"
+23 / OpenDrive
+   \ "opendrive"
+24 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH)
+   \ "swift"
+25 / Pcloud
+   \ "pcloud"
+26 / Put.io
+   \ "putio"
+27 / QingCloud Object Storage
+   \ "qingstor"
+28 / SSH/SFTP Connection
+   \ "sftp"
+29 / Transparently chunk/split large files
+   \ "chunker"
+30 / Union merges the contents of several remotes
+   \ "union"
+31 / Webdav
+   \ "webdav"
+32 / Yandex Disk
+   \ "yandex"
+33 / http Connection
+   \ "http"
+34 / premiumize.me
+   \ "premiumizeme"
+Storage> 13
+** See help for drive backend at: https://rclone.org/drive/ **
+
+Google Application Client Id
+Setting your own is recommended.
+See https://rclone.org/drive/#making-your-own-client-id for how to create your own.
+If you leave this blank, it will use an internal key which is low performance.
+Enter a string value. Press Enter for the default ("").
+client_id>
+Google Application Client Secret
+Setting your own is recommended.
+Enter a string value. Press Enter for the default ("").
+client_secret>
+Scope that rclone should use when requesting access from drive.
+Enter a string value. Press Enter for the default ("").
+Choose a number from below, or type in your own value
+ 1 / Full access all files, excluding Application Data Folder.
+   \ "drive"
+ 2 / Read-only access to file metadata and file contents.
+   \ "drive.readonly"
+   / Access to files created by rclone only.
+ 3 | These are visible in the drive website.
+   | File authorization is revoked when the user deauthorizes the app.
+   \ "drive.file"
+   / Allows read and write access to the Application Data folder.
+ 4 | This is not visible in the drive website.
+   \ "drive.appfolder"
+   / Allows read-only access to file metadata but
+ 5 | does not allow any access to read or download file content.
+   \ "drive.metadata.readonly"
+scope>
+ID of the root folder
+Leave blank normally.
+
+Fill in to access "Computers" folders (see docs), or for rclone to use
+a non root folder as its starting point.
+
+Note that if this is blank, the first time rclone runs it will fill it
+in with the ID of the root folder.
+
+Enter a string value. Press Enter for the default ("").
+root_folder_id>
+Service Account Credentials JSON file path
+Leave blank normally.
+Needed only if you want use SA instead of interactive login.
+Enter a string value. Press Enter for the default ("").
+service_account_file> \\push\sa\neverhappenright-60d160429e9c.json
+Edit advanced config? (y/n)
+y) Yes
+n) No
+y/n> y
+Only consider files owned by the authenticated user.
+Enter a boolean value (true or false). Press Enter for the default ("false").
+auth_owner_only>
+Send files to the trash instead of deleting permanently.
+Defaults to true, namely sending files to the trash.
+Use `--drive-use-trash=false` to delete files permanently instead.
+Enter a boolean value (true or false). Press Enter for the default ("true").
+use_trash>
+Skip google documents in all listings.
+If given, gdocs practically become invisible to rclone.
+Enter a boolean value (true or false). Press Enter for the default ("false").
+skip_gdocs>
+Skip MD5 checksum on Google photos and videos only.
+
+Use this if you get checksum errors when transferring Google photos or
+videos.
+
+Setting this flag will cause Google photos and videos to return a
+blank MD5 checksum.
+
+Google photos are identifed by being in the "photos" space.
+
+Corrupted checksums are caused by Google modifying the image/video but
+not updating the checksum.
+Enter a boolean value (true or false). Press Enter for the default ("false").
+skip_checksum_gphotos>
+Only show files that are shared with me.
+
+Instructs rclone to operate on your "Shared with me" folder (where
+Google Drive lets you access the files and folders others have shared
+with you).
+
+This works both with the "list" (lsd, lsl, etc) and the "copy"
+commands (copy, sync, etc), and with all other commands too.
+Enter a boolean value (true or false). Press Enter for the default ("false").
+shared_with_me>
+Only show files that are in the trash.
+This will show trashed files in their original directory structure.
+Enter a boolean value (true or false). Press Enter for the default ("false").
+trashed_only>
+Comma separated list of preferred formats for downloading Google docs.
+Enter a string value. Press Enter for the default ("docx,xlsx,pptx,svg").
+export_formats>
+Comma separated list of preferred formats for uploading Google docs.
+Enter a string value. Press Enter for the default ("").
+import_formats>
+Allow the filetype to change when uploading Google docs (e.g. file.doc to file.docx). This will confuse sync and reupload every time.
+Enter a boolean value (true or false). Press Enter for the default ("false").
+allow_import_name_change>
+Use file created date instead of modified date.,
+
+Useful when downloading data and you want the creation date used in
+place of the last modified date.
+
+**WARNING**: This flag may have some unexpected consequences.
+
+When uploading to your drive all files will be overwritten unless they
+haven't been modified since their creation. And the inverse will occur
+while downloading.  This side effect can be avoided by using the
+"--checksum" flag.
+
+This feature was implemented to retain photos capture date as recorded
+by google photos. You will first need to check the "Create a Google
+Photos folder" option in your google drive settings. You can then copy
+or move the photos locally and use the date the image was taken
+(created) set as the modification date.
+Enter a boolean value (true or false). Press Enter for the default ("false").
+use_created_date>
+Size of listing chunk 100-1000. 0 to disable.
+Enter a signed integer. Press Enter for the default ("1000").
+list_chunk>
+Impersonate this user when using a service account.
+Enter a string value. Press Enter for the default ("").
+impersonate>
+Use alternate export URLs for google documents export.,
+
+If this option is set this instructs rclone to use an alternate set of
+export URLs for drive documents.  Users have reported that the
+official export URLs can't export large documents, whereas these
+unofficial ones can.
+
+See rclone issue [#2243](https://github.com/rclone/rclone/issues/2243) for background,
+[this google drive issue](https://issuetracker.google.com/issues/36761333) and
+[this helpful post](https://www.labnol.org/internet/direct-links-for-google-drive/28356/).
+Enter a boolean value (true or false). Press Enter for the default ("false").
+alternate_export>
+Cutoff for switching to chunked upload
+Enter a size with suffix k,M,G,T. Press Enter for the default ("8M").
+upload_cutoff>
+Upload chunk size. Must a power of 2 >= 256k.
+
+Making this larger will improve performance, but note that each chunk
+is buffered in memory one per transfer.
+
+Reducing this will reduce memory usage but decrease performance.
+Enter a size with suffix k,M,G,T. Press Enter for the default ("8M").
+chunk_size>
+Set to allow files which return cannotDownloadAbusiveFile to be downloaded.
+
+If downloading a file returns the error "This file has been identified
+as malware or spam and cannot be downloaded" with the error code
+"cannotDownloadAbusiveFile" then supply this flag to rclone to
+indicate you acknowledge the risks of downloading the file and rclone
+will download it anyway.
+Enter a boolean value (true or false). Press Enter for the default ("false").
+acknowledge_abuse> true
+Keep new head revision of each file forever.
+Enter a boolean value (true or false). Press Enter for the default ("false").
+keep_revision_forever> true
+Show storage quota usage for file size.
+
+The storage used by a file is the size of the current version plus any
+older versions that have been set to keep forever.
+Enter a boolean value (true or false). Press Enter for the default ("false").
+size_as_quota>
+If Object's are greater, use drive v2 API to download.
+Enter a size with suffix k,M,G,T. Press Enter for the default ("off").
+v2_download_min_size> 1M
+Minimum time to sleep between API calls.
+Enter a duration s,m,h,d,w,M,y. Press Enter for the default ("100ms").
+pacer_min_sleep>
+Number of API calls to allow without sleeping.
+Enter a signed integer. Press Enter for the default ("100").
+pacer_burst>
+Allow server side operations (eg copy) to work across different drive configs.
+
+This can be useful if you wish to do a server side copy between two
+different Google drives.  Note that this isn't enabled by default
+because it isn't easy to tell if it will work between any two
+configurations.
+Enter a boolean value (true or false). Press Enter for the default ("false").
+server_side_across_configs> true
+Disable drive using http2
+
+There is currently an unsolved issue with the google drive backend and
+HTTP/2.  HTTP/2 is therefore disabled by default for the drive backend
+but can be re-enabled here.  When the issue is solved this flag will
+be removed.
+
+See: https://github.com/rclone/rclone/issues/3631
+
+
+Enter a boolean value (true or false). Press Enter for the default ("true").
+disable_http2> false
+Remote config
+Configure this as a team drive?
+y) Yes
+n) No
+y/n> y
+Fetching team drive list...
+Choose a number from below, or type in your own value
+ 1 / _direct
+   \ "0AHqRdTMD3Vu4Uk9PVA"
+ 2 / _rclone
+   \ "0AA5amwYpOXhqUk9PVA"
+ 3 / _Resources
+   \ "0ALKYFB1yoodqUk9PVA"
+ 4 / _Unsorted
+   \ "0AG0PJTXMo7L3Uk9PVA"
+ 5 / 00-kjX_
+   \ "0ALDG36SQ8h3hUk9PVA"
+ 6 / 1_1
+   \ "0AJ9L69wT8Lf9Uk9PVA"
+ 7 / 2020.Adult
+   \ "0AH9q4sLTY1xnUk9PVA"
+ 8 / 2020.BaK_exe-apk-iso
+   \ "0AISnLSlvJYNMUk9PVA"
+ 9 / 2020.Documents
+   \ "0AKVrSwOef6wvUk9PVA"
+10 / 2020.Downloads
+   \ "0AFhQSVAzbtJWUk9PVA"
+11 / 2020.junkDrawer
+   \ "0ANLYuwl0YSVRUk9PVA"
+12 / 2020.Movies
+   \ "0AKWac9tlvBZCUk9PVA"
+13 / 2020.Music
+   \ "0AMNHaN4Via6OUk9PVA"
+14 / 2020.Pictures
+   \ "0ALSTz37uiI2eUk9PVA"
+15 / 2020.PreSort
+   \ "0AI8npArTA3VdUk9PVA"
+16 / 2020.Television
+   \ "0AKEvVb2Hwjj8Uk9PVA"
+17 / 2020.Training
+   \ "0ALzrPjlt3GdlUk9PVA"
+18 / 2020.Videos
+   \ "0AEs9laD2t6SvUk9PVA"
+19 / 2020.vSphere
+   \ "0AM1HZ6k2Mzr6Uk9PVA"
+20 / Administrator
+   \ "0ACHx4WcWP966Uk9PVA"
+21 / Alias
+   \ "0ADNg1LDJqjPjUk9PVA"
+22 / All__
+   \ "0AP8rzR3w3VbnUk9PVA"
+23 / all_BaK
+   \ "0AE0eulBQ3NPbUk9PVA"
+24 / All_Done
+   \ "0APlOHC29V7cfUk9PVA"
+25 / All_Pics
+   \ "0AKuG8nuTZ2ENUk9PVA"
+26 / All_Web
+   \ "0AOsGtG86TsvwUk9PVA"
+27 / Application
+   \ "0AEnm70UdeeYZUk9PVA"
+28 / Archives_BaK[1-3]
+   \ "0AH0cH28tojePUk9PVA"
+29 / Automation
+   \ "0ABhN5QQkgT7JUk9PVA"
+30 / BaK_
+   \ "0ADXMs30sfX55Uk9PVA"
+31 / BaK
+   \ "0ACV1bo9RZjG7Uk9PVA"
+32 / Clean
+   \ "0ALywsnZ13JpLUk9PVA"
+33 / Compressed
+   \ "0ACYPSN71CIKdUk9PVA"
+34 / Copies
+   \ "0AEKv39TJgD9eUk9PVA"
+35 / D3
+   \ "0AP75XCS7d7SLUk9PVA"
+36 / Done
+   \ "0ACO75ZeUDg4tUk9PVA"
+37 / DownCloud
+   \ "0AE4F9l70pxtfUk9PVA"
+38 / Downloads
+   \ "0AIZRMWTMLHGrUk9PVA"
+39 / downloadsEnd2019
+   \ "0APTqVEfbjqBFUk9PVA"
+40 / Dupes
+   \ "0AMK6EPjQOYmAUk9PVA"
+41 / Emulation
+   \ "0AGiBqpxRIMVNUk9PVA"
+42 / FileCR
+   \ "0AIgsHkxhj78OUk9PVA"
+43 / GamingPS3-MAX
+   \ "0AOpTpRGuACT0Uk9PVA"
+44 / GamingPS3
+   \ "0ALJfzHPQwaKFUk9PVA"
+45 / gDrive
+   \ "0ACB9lPXhAY8vUk9PVA"
+46 / Google
+   \ "0AHLYufz6PXjhUk9PVA"
+47 / gPhotos
+   \ "0AOi6f5Tcs6BCUk9PVA"
+48 / HGST8
+   \ "0ALUFYZqqwmAvUk9PVA"
+49 / ISO
+   \ "0ACmUcLebYIIKUk9PVA"
+50 / MAC
+   \ "0AL9Ge6M0EQTiUk9PVA"
+51 / monitor
+   \ "0AGqgTP5zQIm0Uk9PVA"
+52 / Music_Done
+   \ "0APppunHjrVvqUk9PVA"
+53 / Music_Dump
+   \ "0AEUN4XpH4hUiUk9PVA"
+54 / OVA_Appliances
+   \ "0AMwoFkIP3QI0Uk9PVA"
+55 / P2V
+   \ "0AJq1MpNyR13lUk9PVA"
+56 / Phones.ASUS
+   \ "0AClXAx-YOzG1Uk9PVA"
+57 / picCollection
+   \ "0APsHQZmlzzy2Uk9PVA"
+58 / Pictures_Rips
+   \ "0ANGJYR0vlIzKUk9PVA"
+59 / picturesHotFolder
+   \ "0AB1Qec8OTVMeUk9PVA"
+60 / picturesSorted
+   \ "0AIsBneekx2FeUk9PVA"
+61 / Plex-
+   \ "0ALHgND7pzCzrUk9PVA"
+62 / Plex
+   \ "0AF1KslAIxfYSUk9PVA"
+63 / pr0n_boxsets
+   \ "0ABlxPRlRqpXqUk9PVA"
+64 / pr0n
+   \ "0AILRB8jhJ3pCUk9PVA"
+65 / purge2020-ArchivedArchives
+   \ "0ADBYhj4hMhjRUk9PVA"
+66 / purge2020-CryptStuff
+   \ "0AOOuCSivhyCRUk9PVA"
+67 / purge2020-Documents
+   \ "0AGoeTQ0y9l5CUk9PVA"
+68 / purge2020-Downloads
+   \ "0AESGtuKg0iDSUk9PVA"
+69 / purge2020-DumpStuff
+   \ "0AGvyUCGkym1eUk9PVA"
+70 / purge2020-Groundhogs
+   \ "0AAFUve7eGo8LUk9PVA"
+71 / purge2020-Music
+   \ "0AAWJ0KQWmrTCUk9PVA"
+72 / purge2020-Pictures
+   \ "0AKGcW6IcHRWcUk9PVA"
+73 / purge2020-pr0nStuff
+   \ "0AJMhohQTwE7mUk9PVA"
+74 / r
+   \ "0AEcAQOHEyT1MUk9PVA"
+75 / rclone
+   \ "0AHkhyS74eqtcUk9PVA"
+76 / Repo
+   \ "0AFPdYOI76ginUk9PVA"
+77 / Rips
+   \ "0ADvHPoGvwBnIUk9PVA"
+78 / SkyJae
+   \ "0AE3989X94Q82Uk9PVA"
+79 / Sonarr
+   \ "0AIh9pSQm9MLcUk9PVA"
+80 / stdio
+   \ "0AMGb62dPXAC3Uk9PVA"
+81 / Synology
+   \ "0ADM8uN63fg7uUk9PVA"
+82 / TeamShare
+   \ "0AHTuMn7C3EzGUk9PVA"
+83 / Tosh
+   \ "0ALhaVb45aBwYUk9PVA"
+84 / Veeam
+   \ "0ADnX70HGlsdXUk9PVA"
+85 / vExports
+   \ "0ACd3DWqrrvm1Uk9PVA"
+86 / vhdx
+   \ "0AA9JxUj6m7tDUk9PVA"
+87 / Videos
+   \ "0AC2xuioiev6xUk9PVA"
+88 / VM_Workstation
+   \ "0ABVZO0bE6avhUk9PVA"
+89 / VM
+   \ "0AOiN-hPFHxCiUk9PVA"
+90 / VMware_vSphere
+   \ "0AEHpeuPpnt6TUk9PVA"
+91 / wii
+   \ "0ANR2V35VQoMbUk9PVA"
+92 / work-7z
+   \ "0APwvpgAxkULMUk9PVA"
+93 / work-dos
+   \ "0AIpGv1YwDlleUk9PVA"
+94 / work-ingDrive
+   \ "0APiA3QxqtncYUk9PVA"
+95 / work-ovftool
+   \ "0AOAUnQ47KjokUk9PVA"
+96 / work-python
+   \ "0ABLaWCMAieTTUk9PVA"
+97 / work-rclone
+   \ "0AFwTNeuHElIxUk9PVA"
+98 / work-wget
+   \ "0AI63Wqxmf2YQUk9PVA"
+99 / work-youtubeDL
+   \ "0AHjOa61oLpcgUk9PVA"
+100 / Xpenology
+   \ "0ACAm08ivyg2sUk9PVA"
+101 / z_-_VMware_Flings
+   \ "0AHYCmTbJAYBVUk9PVA"
+102 / z_-_Websites_Saved
+   \ "0AIAsIvTwxhPcUk9PVA"
+103 / z5z16z1z56ISO_Clean
+   \ "0ACCvyIGz6TJNUk9PVA"
+104 / z351z56Sonarr_New
+   \ "0AHKPGb6OfqNOUk9PVA"
+105 / zbat
+   \ "0AExJDHDNd6uFUk9PVA"
+106 / zcmd
+   \ "0ABGFfg7u066pUk9PVA"
+107 / zdump
+   \ "0AHMidONv3sm4Uk9PVA"
+108 / zfilebot
+   \ "0ADNsnPsFuEcwUk9PVA"
+109 / zFiles_Cleaning
+   \ "0AANIr54gjJR0Uk9PVA"
+110 / zgit
+   \ "0AL1aq7ntVsH8Uk9PVA"
+111 / zhtml
+   \ "0AH8QlXimEF0rUk9PVA"
+112 / zInstallers
+   \ "0AHuxbiOR3ubiUk9PVA"
+113 / ZJ_OG--Merge
+   \ "0AJougWQTpYE9Uk9PVA"
+114 / ZJ_Team-Merger_MaxFiles-1.5_Overfolow-Split
+   \ "0APeblT3J4L3nUk9PVA"
+115 / ZJ_Team-Merger_MaxFiles-2_OrPrettyCloseImSure
+   \ "0AIpoSjc0ziyqUk9PVA"
+116 / ZJ_Team-Merger_MaxFiles-2.5_Overfolow-Split
+   \ "0ACWxn9pbmKAmUk9PVA"
+117 / ZJ_Team-Merger_MaxFiles-1
+   \ "0AEPrpBekAuX5Uk9PVA"
+118 / zmp3
+   \ "0AKuQboAgyIbxUk9PVA"
+119 / zmp4
+   \ "0AM8MuzMzJT14Uk9PVA"
+120 / zpgd
+   \ "0AMChlTAxBZFzUk9PVA"
+121 / ztinyAuto
+   \ "0ABbDh9ZOsq5jUk9PVA"
+122 / zxzxjson
+   \ "0AANPdLLfmWcsUk9PVA"
+123 / zz5z4z561z561zzzzz561zDocs-2132432f13
+   \ "0AJ_OXRX9sfanUk9PVA"
+124 / zz32z13z21.config
+   \ "0ALV8ap8LmJvVUk9PVA"
+125 / zzrar
+   \ "0AAg5Z30Mslz2Uk9PVA"
+126 / zzz5z4z56z4Workstation
+   \ "0ANJmdPg_EAqGUk9PVA"
+127 / zzzzz6z51exe
+   \ "0ALMHtt7Sz7PWUk9PVA"
+Enter a Team Drive ID> 38
+2020/01/10 21:27:20 ERROR : Failed saving config "team_drive" = "0AIZRMWTMLHGrUk9PVA" in section "downloads" of the config file: section 'downloads' not found
+--------------------
+[downloads]
+type = drive
+service_account_file = \\push\sa\neverhappenright-60d160429e9c.json
+acknowledge_abuse = true
+keep_revision_forever = true
+v2_download_min_size = 1M
+server_side_across_configs = true
+disable_http2 = false
+team_drive = 0AIZRMWTMLHGrUk9PVA
+--------------------
+y) Yes this is OK
+e) Edit this remote
+d) Delete this remote
+y/e/d> y
+Current remotes:
+
+Name                 Type
+====                 ====
+0                    drive
+13                   drive
+2                    drive
+downloads            drive
+veeam4               alias
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q> q
+
+C:\Users\Administrator>rc;pme ;
+
+C:\Users\Administrator>rclone lsd downloads:
+          -1 2019-10-15 00:28:04        -1 All Downloads from 101419-101519
+          -1 2019-10-12 22:19:28        -1 Android-APK
+          -1 2020-01-03 03:13:46        -1 Dave.Chappelle.Deep.in.the.Heart.of.Texas.2017.NF.WEBRip.DD5.1.x264-BTW
+          -1 2019-12-06 21:55:14        -1 Downloads
+          -1 2017-03-01 09:43:27        -1 Reset-Explorer
+          -1 2019-10-24 08:15:58        -1 _.Attempted.Organization
+          -1 2019-11-15 10:21:19        -1 _pdf
+          -1 2019-11-06 15:56:18        -1 backup-dir
+          -1 2019-12-06 22:03:57        -1 backupDIR
+          -1 2019-12-25 15:53:22        -1 backupDir
+          -1 2019-11-09 14:27:38        -1 esxi-unlocker-300
+
+C:\Users\Administrator>rclone size downloads:Downloads
+Total objects: 79342
+Total size: 610.419 GBytes (655432822441 Bytes)
+
+C:\Users\Administrator>
+
+
+
+Crashed a lot with cyberduck = filezilla wants to continually parse and list the damn directory

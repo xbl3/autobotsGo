@@ -1,0 +1,10 @@
+$	n preVarTest.cmd
+
+$	set preRip=ripMe
+
+$	preVarTest.cmd
+command above "if defined ....."
+ripMe
+
+$	echo %ripList%
+D:\wget-mirror-input-list.txt
